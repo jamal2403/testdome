@@ -3,21 +3,18 @@ class Palindrome
 {
     public static function isPalindrome($word)
     {
-        $word=strtolower($word);
-        $word=preg_replace('/[^a-zA-Z]/','',$word);
-        $wordPanjang=strlen($word);
-        $wordSplit=ceil($wordPanjang/2);
+         $word = strtolower($word);
+        $panjang = strlen($word);
         
-        if($wordPanjang % 2 ==0){
-            $firsthalf=substr($word,0,$wordSplit);
-            $secondhalf=substr($word,$wordSplit,$wordSplit);
-        }else{
-            $firsthalf=substr($word,0,$wordSplit-1);
-            $secondhalf=substr($word,$wordSplit,$wordSplit);
+        for($i = 0; $i < $panjang; $i++)
+        {
+            if ($word[$i] != $word[$panjang - 1 - $i])
+            {
+                return false;
+            }
         }
         
-        $secondhalf=strrev($secondhalf);
-        return $word == strrev($secondhalf);
+        return true;
         
     }
 }
